@@ -10,7 +10,7 @@ class Solution {
             if(arr[i]==arr[i-1]){
                 continue;
             }
-            if(arr[i]==arr[i-1]+1){
+            if(arr[i]-arr[i-1]==1){
                 c++;
             
             }
