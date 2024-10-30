@@ -8,5 +8,20 @@ class Solution {
         }
        } 
        return new int[]{};
+    // int s=0;
+    // int l=nums.length-1;
+    // while(s<l){
+    //     int sum=nums[s]+nums[l];
+    //     if(sum==target){
+    //         return new int[]{s,l};
+    //     }
+    //    else if(sum<target){
+    //     s++;
+    //    }
+    //    else{
+    //     l--;
+    //    }
+    // }
+    // return new int[]{};
     }
 }
