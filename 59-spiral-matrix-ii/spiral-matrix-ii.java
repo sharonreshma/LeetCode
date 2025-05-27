@@ -1,12 +1,10 @@
 class Solution {
     public int[][] generateMatrix(int n) {
         int[][] arr=new int[n][n];
-        int t=0;
-        int l=0;
-        int b=n-1, r=n-1;
+        int t=0,b=n-1,l=0,r=n-1;
         int c=1;
-        while(l<=r && t<=b){
-            for(int i=l;i<=r;i++){
+        while(t<=b && l<=r){
+            for(int i=l;i<=b;i++){
                 arr[t][i]=c++;
             }
             t++;
@@ -14,11 +12,13 @@ class Solution {
                 arr[i][r]=c++;
             }
             r--;
-            if(l<=r){
+            if(t<=b){
                 for(int i=r;i>=l;i--){
                     arr[b][i]=c++;
                 }
                 b--;
+            }
+            if(l<=r){
                 for(int i=b;i>=t;i--){
                     arr[i][l]=c++;
                 }
