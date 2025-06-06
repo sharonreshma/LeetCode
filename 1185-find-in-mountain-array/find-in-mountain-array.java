@@ -9,50 +9,50 @@
  
 class Solution {
     public int findInMountainArray(int target, MountainArray mountainArr) {
-        int peak=peakIndexInMountainArray(mountainArr);
-        int first=bs(target,mountainArr,0,peak);
-        if(first!=-1){
-            return first;
+        int p=peak(target,mountainArr);
+        int f=search(target,mountainArr,0,p);
+        if(f!=-1){
+            return f;
         }
-        return bs(target,mountainArr,peak+1,mountainArr.length()-1);
+        return search(target,mountainArr,p+1,mountainArr.length()-1);
     }
-    public int peakIndexInMountainArray(MountainArray mountainArr) {
-      int s=0;
-      int l=mountainArr.length()-1;
-      while(s<l){
-        int mid=s+(l-s)/2;
-        if(mountainArr.get(mid)>mountainArr.get(mid+1)){
-            l=mid;
+   
+    public int peak(int target,MountainArray mountainArr){
+        int s=0;
+        int e=mountainArr.length()-1;
+        while(s<e){
+            int mid=s+(e-s)/2;
+            if(mountainArr.get(mid)>mountainArr.get(mid+1)){
+                e=mid;
+            }else{
+                s=mid+1;
+            }
         }
-        else{
-            s=mid+1;
-        }
-      }
-         return l;
+        return e;
     }
-    public int bs(int target, MountainArray mountainArr,int s,int l) {
-        boolean isAsc=mountainArr.get(s)<mountainArr.get(l);
-        while(s<=l){
-            int mid=s+(l-s)/2;
-            if(mountainArr.get(mid)==target){
+     public int search(int target,MountainArray mountainArr,int s,int e){
+        boolean isasc= mountainArr.get(s)< mountainArr.get(e);
+
+        while(s<=e){
+            int mid=s+(e-s)/2;
+             
+            if(target==mountainArr.get(mid)){
                 return mid;
             }
-            if(isAsc){
-            if(mountainArr.get(mid)>target){
-                l=mid-1;
-            }
-            else{
-                s=mid+1;
+           
+            if(isasc){
+            if(mountainArr.get(mid)<target){
+               s=mid+1;
+                }else{
+                e=mid-1;
             }
             }else{
-               if(mountainArr.get(mid)>target){
+                if(mountainArr.get(mid)<target){
+               e=mid-1;
+                }else{
                 s=mid+1;
             }
-            else{
-                l=mid-1;
-            } 
             }
-            
         }
         return -1;
     }
