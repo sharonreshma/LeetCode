@@ -1,32 +1,39 @@
 class Solution {
-    public int search(int[] nums,int target,boolean index){
+    public int lb(int[] nums,int target){
         int s=0;
-        int l=nums.length-1;
-        int ans=-1;
-        while(s<=l){
-            int mid=s+(l-s)/2;
-            if(nums[mid]==target){
+        int e=nums.length-1;
+        int ans=nums.length;
+        while(s<=e){
+            int mid=s+(e-s)/2;
+            if(nums[mid]>=target){
                 ans=mid;
-                if(index){
-                    l=mid-1;
-                }else{
-                    s=mid+1;
-                }
-            }
-            else if(nums[mid]<target){
-                s=mid+1;
+                e=mid-1;
             }else{
-                l=mid-1;
+                s=mid+1;
             }
         }
         return ans;
     }
+      public int ub(int[] nums,int target){
+        int s=0;
+        int e=nums.length-1;
+        int an=nums.length;
+        while(s<=e){
+            int mid=s+(e-s)/2;
+            if(nums[mid]>target){
+                an=mid;
+                e=mid-1;
+            }else{
+                s=mid+1;
+            }
+        }
+        return an;
+    }
     public int[] searchRange(int[] nums, int target) {
-        int[] ans={-1,1};
-        int start=search(nums,target,true);
-        int last=search(nums,target,false);
-        ans[0]=start;
-        ans[1]=last;
-        return ans;
+        int l=lb(nums,target);
+        if(l==nums.length || nums[l]!=target ){
+            return new int[]{-1,-1};
+        }
+        return new int[]{l,ub(nums,target)-1};
     }
 }
