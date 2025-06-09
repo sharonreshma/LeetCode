@@ -1,30 +1,25 @@
 class Solution {
+    public long ban(int[] piles,int h){
+        int tothours=0;
+        for(int pile:piles){
+            tothours+=(double)(pile+h-1)/(double)h;
+        }
+        return tothours;
+    }
     public int minEatingSpeed(int[] piles, int h) {
-        int low = 1;
-        int high = 0;
-
-        for (int pile : piles) {
-            high = Math.max(high, pile);
+        int s=1;
+        int e=0;
+        for(int pile:piles){
+            e=Math.max(pile,e);
         }
-
-        int result = high;
-
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            long hours = 0;
-
-            for (int pile : piles) {
-                hours += (pile + mid - 1) / mid;
-            }
-
-            if (hours <= h) {
-                result = mid;  
-                high = mid - 1; 
-            } else {
-                low = mid + 1;
+        while(s<=e){
+            int mid=s+(e-s)/2;
+            if(ban(piles,mid)<=h){
+                e=mid-1;
+            }else{
+                s=mid+1;
             }
         }
-
-        return result;
+        return s;
     }
 }
