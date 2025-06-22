@@ -1,12 +1,12 @@
 class Solution {
-    public int maxr(int[][] mat,int col){
+    public int maxr(int[][] mat,int c){
         int m=0;
         int idx=0;
         for(int i=0;i<mat.length;i++){
-        if(mat[i][col]>m){
-            m=mat[i][col];
+            if(mat[i][c]>m){
+                m=mat[i][c];
             idx=i;
-        }
+            }
         }
         return idx;
     }
@@ -18,7 +18,7 @@ class Solution {
             int row=maxr(mat,mid);
             int l=mid-1>0?mat[row][mid-1]:-1;
             int r=mid+1<mat[0].length?mat[row][mid+1]:-1;
-            if(mat[row][mid]>l && mat[row][mid]>r){
+            if(mat[row][mid]>l&&mat[row][mid]>r){
                 return new int[]{row,mid};
             }
             else if(mat[row][mid]<l){
