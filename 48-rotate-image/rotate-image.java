@@ -4,19 +4,21 @@ class Solution {
         int b=matrix.length-1;
         while(t<b){
             for(int i=0;i<matrix.length;i++){
-                int to=matrix[t][i];
-                matrix[t][i]=matrix[b][i];
-                matrix[b][i]=to;
+                //for(int j=0;j<matrix[0].length-1;i++){
+                     int to=matrix[t][i];
+                     matrix[t][i]=matrix[b][i];
+                     matrix[b][i]=to;
+                //}
             }
             t++;
-                b--;
+            b--;
         }
-        for(int i=0;i<matrix.length;i++){
-            for(int j=i+1;j<matrix[0].length;j++){
-                int tt=matrix[i][j];
-                matrix[i][j]=matrix[j][i];
-                matrix[j][i]=tt;
-            }
-        }
+         for(int i=0;i<matrix.length;i++){
+                for(int j=i+1;j<matrix[0].length;j++){
+                    int tt=matrix[i][j];
+                    matrix[i][j]=matrix[j][i];
+                    matrix[j][i]=tt;
+                }
+         }
     }
 }
