@@ -5,11 +5,11 @@ class Solution {
         String l=strs[strs.length-1];
         int i=0;
         while(i<s.length() && i<l.length()){
-            if(s.charAt(i)==l.charAt(i)){
-                i++;
-            }else{
-                break;
-            }
+          if(s.charAt(i)==l.charAt(i)){
+            i++;
+          }else{
+            break;
+          }
         }
         return s.substring(0,i);
     }
