@@ -5,6 +5,7 @@ class Solution {
             if(word.charAt(i)!=word.charAt(i-1)){
                 c--;
             }
+
         }
         return c;
     }
