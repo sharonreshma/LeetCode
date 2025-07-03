@@ -10,12 +10,12 @@ class Solution {
         h.put('M',1000);
         int t=0,p=0;
         for(int i=s.length()-1;i>=0;i--){
-            if(h.get(s.charAt(i))<p){
-               t-=h.get(s.charAt(i));
+            if(p>h.get(s.charAt(i))){
+         t-=h.get(s.charAt(i));
             }else{
                 t+=h.get(s.charAt(i));
             }
-            p=h.get(s.charAt(i));
+            p=h.get(s.charAt(i));;
         }
         return t;
     }
