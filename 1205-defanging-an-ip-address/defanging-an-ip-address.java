@@ -1,5 +1,6 @@
 class Solution {
     public String defangIPaddr(String address) {
-       return address.replace(".","[.]");
+        String s=address.replace(".","[.]");
+        return s;
     }
 }
