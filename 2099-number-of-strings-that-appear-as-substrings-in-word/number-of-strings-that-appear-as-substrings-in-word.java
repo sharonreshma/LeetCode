@@ -3,7 +3,7 @@ class Solution {
         int c=0;
         for(int i=0;i<patterns.length;i++){
             if(word.contains(patterns[i])){
-                c++;
+            c++;
             }
         }
         return c;
