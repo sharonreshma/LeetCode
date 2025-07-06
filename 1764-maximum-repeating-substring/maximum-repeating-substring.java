@@ -1,10 +1,10 @@
 class Solution {
-    public int maxRepeating(String s, String w) {
+    public int maxRepeating(String sequence, String word) {
         int c=0;
-    StringBuilder sb=new StringBuilder(w);
-        while(s.contains(sb)){
-           c++;
-           sb.append(w);
+        String ss=word;
+        while(sequence.contains(ss)){
+            c++;
+            ss+=word;
         }
         return c;
     }
